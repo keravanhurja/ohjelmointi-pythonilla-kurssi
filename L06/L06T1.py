@@ -1,18 +1,18 @@
 def tiedostoKirjoita(tNimi):
-    while True:
-        with open(tNimi, "a") as tiedosto:
+    with open(tNimi, "w") as tiedosto:
+        while True:
             nimi = input("Anna tiedostoon tallennettava nimi (0 lopettaa): ")
             if nimi == "0":
+                print(f"Tiedostoon '{tNimi}' on tallennettu seuraavat nimet:")
                 break
             tiedosto.write(nimi+"\n")
         
 def tiedostoLue(tNimi):
     with open(tNimi) as tiedosto:
-            for x in tiedosto:
-                print(x)
+            for rivi in tiedosto:
+                print(rivi.strip())
 def main():
     tNimi = input("Anna tallennettavan tiedoston nimi: ")
-    tNimi += ".txt"
     tiedostoKirjoita(tNimi)
     tiedostoLue(tNimi)
     print("Kiitos ohjelman käytöstä.")
